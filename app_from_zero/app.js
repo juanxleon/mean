@@ -6,11 +6,17 @@ var http = require('http');
 var app = express();
 //le indicamos el puerto de escucha 
 app.set('port', process.env.PORT || 3000);
+//instanceamos plantillas jade
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
 app.use(express.bodyParser());
-
 //creacion de las rutas 
+//pasando parametros a una vista 
 app.get('/', function(req, res){
-	res.send('¡hola, Express!');
+	res.render('index',{
+		title : '¡hola, express!',
+		username : 'Juan Leon'
+	});
 });
 //metodo GET
 app.get('/users/:userName',function(req, res){
@@ -22,14 +28,10 @@ app.post('/users', function(req, res){
 	var username = req.body.username;
 	res.send('¡hola, ' + username + '!');
 });
-
+//expresion regular en la url 
 app.get(/\/personal\/(\d*)\/?(edit)?/, function(req, res){
 	var message = ' el perfil del empleado #' + req.params[0];
-	if(req.params[1] === 'edit'){
-		message = 'Editando' + message;
-	}else{
-		message = 'Vierdo' + message;
-	}
+	message = (req.params[1] === 'edit')? 'Editando' + message : 'Vierdo' + message;
 	res.send(message);
 });
 
