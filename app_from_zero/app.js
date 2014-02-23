@@ -18,6 +18,9 @@ app.get('/', function(req, res){
 		username : 'Juan Leon'
 	});
 });
+app.get('/sintaxis', function(req, res){
+	res.render('sintaxis');
+});
 //metodo GET
 app.get('/users/:userName',function(req, res){
 	var name = req.params.userName;

@@ -1,0 +1,43 @@
+style
+    h1 {
+        color: blue;
+    }
+
+script
+    var a = 1;
+
+h1.titulo Hola, mi nombre es Juan Leon
+ 
+h2.subtitulo.cursiva y me gusta programar en los siguientes lenguajes:
+- var name = 'Juan Leon';
+ul#lenguajes.lista
+    li Javascript
+    li Objective-C
+    li Mi nombre es: #{name}
+
+p un texto corto
+ 
+p
+    | un 
+    | texto
+    | muy
+    |largo
+    |link 
+
+    a(href="http://google.com", rel="nofollow") ir a google
+
+p.
+    un
+    texto
+    muy
+    largo
+    dos
+a(href="http://google.com", rel="nofollow") ir a google
+
+- var authors = [ {name: 'Juan Leon', tutorial: 'IOS'}, {name: 'carlos', tutorial: 'django'}, {name: 'federico', tutorial: 'TDD'} ];
+
+include author-info
+
+ul
+    each author in authors
+        mixin authorInfo(author)
