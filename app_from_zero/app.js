@@ -9,6 +9,8 @@ app.set('port', process.env.PORT || 3000);
 //instanceamos plantillas jade
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+//activamos el cache de la pagina
+app.set('view cache', true);
 app.use(express.bodyParser());
 //creacion de las rutas 
 //pasando parametros a una vista 
