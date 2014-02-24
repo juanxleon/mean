@@ -13,6 +13,7 @@ app.set('view engine', 'jade');
 app.set('view cache', true);
 app.use(express.bodyParser());
 app.use(express.cookieParser());
+app.use(express.session({secret: 'estoEsUnSecreto'}));
 //app.use(express.static(path.join(__dirname, 'public')));
 //creacion de las rutas 
 //pasando parametros a una vista 
@@ -28,10 +29,16 @@ app.get('/sintaxis', function(req, res){
 //metodo GET
 //manejo de cookies
 app.get('/users/:userName',function(req, res){
+	req.session.name = req.params.userName;
 	var name = req.params.userName;
-	//res.send('¡Hola, ' + name + '!');
+	//res.send('¡Hola, ' + name + '!');	
 	res.cookie('name', 'Juan Leon', {expires: new Date(Date.now() + 900000)});
-	res.send('<p>vea el valor de la cookie <a href="/name">Aqui</a></p>');
+	//res.send('<p>vea el valor de la cookie <a href="/name">Aqui</a></p>');
+	res.send('<p>Vea el valor de esta sesion <a href="/nameSession">Aqui</a></p>');
+});
+//mostrar sessiones 
+app.get('/nameSession', function(req, res){
+	res.send(req.session.name);
 });
 //Mostrar Cookies
 app.get('/name',function(req, res){
