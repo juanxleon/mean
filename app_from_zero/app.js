@@ -64,6 +64,11 @@ app.get(/\/personal\/(\d*)\/?(edit)?/, function(req, res){
 	res.send(message);
 });
 
+//Importando el nuevo modulo HealthComponent.js
+var myHealthComponent = require('./healthComponent.js');
+console.log('Vida actual: ', myHealthComponent.health);
+console.log('Fuiste atacado, tus vidas disminuyeron a: ' + myHealthComponent.getHit(2));
+
 
 //funcion por la cual se asigna al puerto a escuchar la aplicacion
 http.createServer(app).listen(app.get('port'),function(){
