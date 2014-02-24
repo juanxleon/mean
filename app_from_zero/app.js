@@ -67,6 +67,8 @@ app.get(/\/personal\/(\d*)\/?(edit)?/, function(req, res){
 //Importando el nuevo modulo HealthComponent.js
 var HealthComponent = require('./healthComponent.js');
 var myHealthComponent = new HealthComponent(10);
+// O se puede llamar 
+//var HealthComponent = require('./healthComponent.js')(10);
 
 
 //funcion por la cual se asigna al puerto a escuchar la aplicacion
